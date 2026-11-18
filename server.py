@@ -16,7 +16,7 @@ import time
 
 from aiohttp import WSMsgType, web
 
-GAMES = {"snake", "zov", "blast", "quantum", "hole"}
+GAMES = {"snake", "zov", "blast", "quantum", "life"}
 ROOM_IDLE_SEC = 600        # комната без игроков живёт 10 минут
 WAIT_ROOM_SEC = 900        # комната, где никто так и не присоединился
 MAX_LOG = 20000
@@ -44,7 +44,6 @@ def clean_opts(d):
     mode = int(d.get("mode", 1))
     return {"mode": mode if mode in (1, 2, 3) else 1,
             "bomb": bool(d.get("bomb", False)), "full": bool(d.get("full", False)),
-            "grow": bool(d.get("grow", False)),
             "players": 3 if int(d.get("players", 2)) == 3 else 2}
 
 
